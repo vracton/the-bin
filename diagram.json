@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "author": "The Bin - Hack Club",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-pi-pico-w", "id": "pico", "top": 44.75, "left": -73.25, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "wokwi-hc-sr04-0",
+      "top": 88.25,
+      "left": 110.05,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-neopixel",
+      "id": "wokwi-neopixel-0",
+      "top": 108.45,
+      "left": -122.25,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "wokwi-potentiometer-0",
+      "top": 68.2,
+      "left": 27.5,
+      "rotate": 270,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "wokwi-potentiometer-0:GND", "pico:GP28", "black", [ "h9.6", "v38.4", "h-86.4", "v-38.4" ] ],
+    [ "pico:VBUS", "wokwi-hc-sr04-0:VCC", "green", [ "h0" ] ],
+    [ "wokwi-hc-sr04-0:TRIG", "pico:GP21", "green", [ "h-28.8", "v47.6" ] ],
+    [ "wokwi-hc-sr04-0:ECHO", "pico:GP20", "green", [ "h-19.2", "v47.2" ] ],
+    [ "wokwi-hc-sr04-0:GND", "pico:GND.5", "black", [ "h-9.6", "v66" ] ],
+    [ "wokwi-neopixel-0:VSS", "pico:GND.2", "green", [ "v0" ] ],
+    [ "wokwi-neopixel-0:DIN", "pico:GP5", "green", [ "h0" ] ],
+    [ "wokwi-neopixel-0:VDD", "pico:VBUS", "green", [ "h0", "v-76.8", "h124.8" ] ],
+    [ "wokwi-potentiometer-0:SIG", "pico:GP26", "green", [ "h19.2", "v58", "h-105.6", "v-19.2" ] ],
+    [ "wokwi-potentiometer-0:VCC", "pico:VBUS", "red", [ "h9.6", "v-37.6" ] ]
+  ],
+  "dependencies": {}
+}
