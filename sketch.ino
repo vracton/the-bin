@@ -31,11 +31,24 @@ void loop() {
   digitalWrite(PIN_TRIG, LOW);
 
   // Read the result:
-  int value = analogRead(26);
-  int duration = pulseIn(PIN_ECHO, HIGH);
-  //CM /58, IN /148 
-
-  pixels.setPixelColor(0, red);
+  int dis = analogRead(26);
+  int duration = pulseIn(PIN_ECHO, HIGH)/58;
+  //CM /58, IN /148
+  int val = 200-abs(dis-duration);
+  if (val>200){
+    val = 200;
+  }
+  int b = 0;
+  int g = 255;
+  int r = 255;
+  if (val <100){
+    g = round(val/100*255);
+  } 
+  if (val >100){
+    r = round(255-(val-100)/100*255);
+  } 
+  pixels.setPixelColor(0, pixels.Color(r, g, b));
+  //Serial1.println(val);
   pixels.show();
   delay(1000);
 }
